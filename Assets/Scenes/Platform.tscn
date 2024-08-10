@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch208u2muxe4a"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/platform.gd" id="1_03v8o"]
+[ext_resource type="Texture2D" uid="uid://baijyf8t3jjt" path="res://Assets/Sprites/Platform.png" id="1_lb6qk"]
+
+[node name="PlatformHolder" type="Node2D"]
+script = ExtResource("1_03v8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lb6qk")
