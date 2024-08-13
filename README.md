@@ -1,10 +1,8 @@
 # Dino Rip Off
 An open-source pixel art endless runner rip off of the Chrome Dino game!
 
-<figure>
-  <img src="res://Assets/Sprites/conCept/earlyConcept.png" alt="Visual Concept">
-  <figcaption style = "font-style: italic">Early concept.</figcaption>
-</figure>
+![LandscapeConcept](https://github.com/user-attachments/assets/e7fb400c-c0f0-46f3-b785-6fb0dfa9caf7)
+*Early Concept*
 
 ## Overview
 Dino Rip Off is a fun and challenging game where you guide a square blob through a platform, avoiding obstacles and striving to achieve the highest score. It’s designed to be a learning experience and a foundation for others to build upon.
