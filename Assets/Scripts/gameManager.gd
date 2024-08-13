@@ -15,5 +15,6 @@ func scoreIncrease():
 	print(score)
 
 
+
 func _on_score_counter_area_entered(_area):
 	scoreIncrease()
