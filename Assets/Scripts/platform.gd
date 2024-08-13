@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = -30
+var speed = GameManager.GlobalSpeed
 var destroyPoint = -370
 
 var scene: PackedScene = load("res://Assets/Scenes/Platform.tscn")
