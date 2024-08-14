@@ -21,13 +21,15 @@ size = Vector2(5, 45.5)
 script = ExtResource("1_hcojy")
 
 [node name="Total Background" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -500
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Total Background"]
 position = Vector2(-1, -25)
+scale = Vector2(1, 2)
 texture = ExtResource("2_157kv")
 
 [node name="Distant" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -3
+z_index = -250
 position = Vector2(0, -15)
 scale = Vector2(0.7, 0.7)
 motion_mirroring = Vector2(575.85, 0)
@@ -38,7 +40,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 576, 106.916)
 
 [node name="Cloud" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -2
+z_index = -150
 position = Vector2(-1, 7)
 motion_mirroring = Vector2(529.22, 0)
 
@@ -48,7 +50,7 @@ region_enabled = true
 region_rect = Rect2(0, 182, 576, 29.4459)
 
 [node name="Mid Build" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -1
+z_index = -90
 position = Vector2(0, 2)
 motion_mirroring = Vector2(460.755, 0)
 
@@ -64,11 +66,6 @@ region_rect = Rect2(0, 218.995, 576, 99.0841)
 unique_name_in_owner = true
 script = ExtResource("1_eiwda")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 1)
-offset = Vector2(0, -27)
-zoom = Vector2(7.7, 7.7)
-
 [node name="PlatformHolder" parent="." instance=ExtResource("1_jmujv")]
 position = Vector2(190, 0)
 
@@ -77,6 +74,16 @@ position = Vector2(766, 0)
 
 [node name="Blob" parent="." instance=ExtResource("3_yn56u")]
 position = Vector2(-34, -34)
+platform_floor_layers = 4294967293
+platform_wall_layers = 2
+
+[node name="Camera2D" type="Camera2D" parent="Blob"]
+position = Vector2(34, 35)
+offset = Vector2(0, -27)
+zoom = Vector2(7.7, 7.7)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_vertical_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -1)
@@ -97,5 +104,7 @@ script = ExtResource("7_xvpjx")
 
 [node name="spike0" parent="Obstacle_Spawner" instance=ExtResource("7_ouru2")]
 position = Vector2(95, -25)
+collision_layer = 2
+collision_mask = 2
 
 [connection signal="area_entered" from="ScoreCounter" to="GameManager" method="_on_score_counter_area_entered"]

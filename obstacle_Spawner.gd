@@ -9,15 +9,18 @@ var is_spawnable = false
 var obsSpawnPoint_x = 95.0
 var obsSpawnPoint_y = -25
 
-var obsInstance = load("res://Assets/Scenes/spike0.tscn")
+var obsInstance = [load("res://Assets/Scenes/spike0.tscn"),load("res://Assets/Scenes/spike1.tscn"), load("res://Assets/Scenes/spikeTrad.tscn")]
+var obsIndex = 0
 
 func spawnSpike():
-	var newSpike = obsInstance.instantiate()
+	var newSpike = obsInstance[obsIndex].instantiate()
 	newSpike.position = Vector2(obsSpawnPoint_x, obsSpawnPoint_y)
 	add_child(newSpike)
+	generateRandom_chooser()
 
 func _ready():
-	generateRandom()
+	generateRandom_spawner()
+	generateRandom_chooser()
 
 func _process(delta):
 	children = get_children()
@@ -28,14 +31,14 @@ func _process(delta):
 	if target_x < spawnDistant:
 		if is_spawnable == true:
 			spawnSpike()
-			generateRandom()
+			generateRandom_spawner()
 			is_spawnable = false
 		else:
 			is_spawnable = true
 	
-	print(spawnDistant)
-	print(children)
-	print(targetObject)
 
-func generateRandom():
+func generateRandom_spawner():
 	spawnDistant = randi_range(-50,60)
+
+func generateRandom_chooser():
+	obsIndex = randi_range(0,obsInstance.size()-1)

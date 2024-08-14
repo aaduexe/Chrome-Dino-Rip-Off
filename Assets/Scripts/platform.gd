@@ -14,3 +14,4 @@ func _process(delta):
 		newPlatform.position = Vector2(newPlatformPosition, position.y)
 		get_parent().add_child(newPlatform)
 		queue_free()
+	

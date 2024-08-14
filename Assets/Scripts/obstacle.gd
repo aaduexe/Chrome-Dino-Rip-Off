@@ -13,3 +13,8 @@ func _process(delta):
 		queue_free()
 	
 
+
+
+func _on_body_entered(body):
+	if body.name == "Blob":
+		print("Player collided")
