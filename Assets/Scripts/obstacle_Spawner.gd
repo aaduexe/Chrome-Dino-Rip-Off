@@ -26,6 +26,7 @@ func _process(delta):
 	children = get_children()
 	targetObject = children[children.size()-1]
 	target_x = targetObject.position.x
+	GameManager.speedIncreaser()
 	
 	
 	if target_x < spawnDistant:
@@ -42,3 +43,13 @@ func generateRandom_spawner():
 
 func generateRandom_chooser():
 	obsIndex = randi_range(0,obsInstance.size()-1)
+	
+
+
+
+
+
+
+func _on_timer_timeout():
+	Engine.time_scale = 1
+	get_tree().reload_current_scene()

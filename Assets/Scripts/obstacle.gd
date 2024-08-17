@@ -1,11 +1,14 @@
 extends Area2D
 
-var speed = GameManager.GlobalSpeed
+
 var destroyPoint = -84.0
+@onready var timer = $"../../Timer"
+
 
 
 
 func _process(delta):
+	var speed = GameManager.GlobalSpeed
 	position.x += speed * delta
 
 	
@@ -13,8 +16,11 @@ func _process(delta):
 		queue_free()
 	
 
-
-
 func _on_body_entered(body):
 	if body.name == "Blob":
-		print("Player collided")
+		Engine.time_scale = 0.3
+		timer.start()
+
+
+
+
