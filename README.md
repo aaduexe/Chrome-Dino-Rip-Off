@@ -47,8 +47,8 @@ Enhance character and environment assets.
 Implement additional features based on community feedback.
 
 ## Contact
-GitHub: https://github.com/taledrawer
-X (formerly Twitter): @taledrawer
+GitHub: https://github.com/aaduexe
+X (formerly Twitter): [@aaduexe](https://x.com/aaduexe)
 Substack: [Subscribe for Updates](https://taledrawer.substack.com)
 
 Thank you for checking out DinoRipOff! I’m excited to share this journey with you and look forward to your contributions and feedback.
