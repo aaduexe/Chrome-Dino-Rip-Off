@@ -26,6 +26,8 @@ Dino Rip Off is a fun and challenging game where you guide a square blob through
 - Platform looping is implemented.
 - On-ready obstacle spawning and basic scoring logic are set up.
 - Character animations (idle and jump) are in place.
+- Parallaxing background is implemented
+- Ground obstacles generate on randon range.
 
 # Getting Started
 *Clone the Repository:*
@@ -34,7 +36,7 @@ git clone https://github.com/taledrawer/Chrome-Dino-Rip-Off.git
 ```
 *Install Dependencies:*
 
-Latest version of [Godot](https://godotengine.org/).
+Version: 4.2.2 stable of [Godot]([https://godotengine.org/](https://godotengine.org/download/archive/4.2.2-stable/)).
 
 ## Contributing
 **Contributions Welcome:** Feel free to fork the repository, make changes, and submit pull requests. Add any crazy feature or game behaviour. *Make sure to push it in the branch 'crew'*.
