@@ -4,6 +4,7 @@ var obstacleCounter = 0
 var distance = 0
 var increasePoint = 5
 var GlobalSpeed = -30
+var Globaltutorial = true
 
 var player_alive = true
 

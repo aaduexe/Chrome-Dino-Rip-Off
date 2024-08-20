@@ -52,4 +52,9 @@ func generateRandom_chooser():
 
 func _on_timer_timeout():
 	Engine.time_scale = 1
+	GameManager.obstacleCounter = 0
+	GameManager.distance = 0
+	GameManager.increasePoint = 5
+	GameManager.GlobalSpeed = -30
+	GameManager.Globaltutorial = false
 	get_tree().reload_current_scene()
