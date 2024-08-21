@@ -3,6 +3,7 @@ extends Area2D
 
 var destroyPoint = -84.0
 @onready var timer = $"../../Timer"
+@onready var game_over = $"../../CanvasLayer/GameOver"
 
 
 
@@ -18,8 +19,9 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Blob":
-		Engine.time_scale = 0.3
-		timer.start()
+		game_over.visible = true
+		body.game_over()
+		Engine.time_scale = 0.1
 
 
 

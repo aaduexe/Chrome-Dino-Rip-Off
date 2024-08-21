@@ -1,5 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /Concepts/*
+/Build/*
 /icon.svg
 /icon.svg.import
+/export_presets.cfg

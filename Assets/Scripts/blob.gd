@@ -37,8 +37,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 		move_and_slide()
 
-func _on_timer_timeout():
-	Engine.time_scale = 1
-	get_tree().reload_current_scene()
+func game_over():
+	GameManager.player_alive = false
 
 

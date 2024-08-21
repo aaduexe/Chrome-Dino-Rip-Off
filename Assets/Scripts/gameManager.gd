@@ -10,7 +10,8 @@ var player_alive = true
 
 
 func _on_score_counter_area_entered(area):
-	obstacleCounter += 1
+	if player_alive == true:
+		obstacleCounter += 1
 	
 func distanceCovered():
 	distance += GlobalSpeed * -1 * 0.008 * get_process_delta_time()

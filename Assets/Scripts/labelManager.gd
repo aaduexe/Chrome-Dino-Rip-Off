@@ -45,6 +45,8 @@ func _process(delta):
 			if use_space.position.x < -370:
 				space_passed = true
 				use_space.queue_free()
+	else:
+		use_space.visible = false
 
 	if distance_display_int < 1000:
 		distance_covered.text = "Distance: " + str(distance_display_int) + "m"
