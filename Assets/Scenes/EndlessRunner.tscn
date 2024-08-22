@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbbubsu6ot2co"]
+[gd_scene load_steps=26 format=3 uid="uid://cbbubsu6ot2co"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/gameManager.gd" id="1_eiwda"]
 [ext_resource type="Script" path="res://Assets/Scripts/parallaxBackground.gd" id="1_hcojy"]
@@ -12,6 +12,28 @@
 [ext_resource type="Script" path="res://Assets/Scripts/labelManager.gd" id="10_gu7ct"]
 [ext_resource type="FontFile" uid="uid://b7sflrkstwxlt" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="11_8fy1n"]
 
+[sub_resource type="Curve" id="Curve_5ctna"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jvkm3"]
+curve = SubResource("Curve_5ctna")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8hmm5"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(1, 1, 0)
+spread = 50.0
+gravity = Vector3(-20, -4, 0)
+linear_accel_min = 5.0
+linear_accel_max = 100.0
+damping_min = 1.0
+damping_max = 10.0
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_jvkm3")
+color = Color(0.12549, 0.0862745, 0.0980392, 1)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nxjnd"]
 distance = 20.0
 
@@ -22,11 +44,16 @@ size = Vector2(5, 45.5)
 background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
-glow_levels/3 = 16.0
-glow_levels/5 = 0.0
-glow_intensity = 0.9
-glow_strength = 0.31
-glow_bloom = 0.3
+glow_levels/1 = 0.5
+glow_levels/2 = 1.19
+glow_levels/3 = 2.17
+glow_levels/4 = 3.09
+glow_levels/5 = 5.3
+glow_levels/6 = 7.18
+glow_intensity = 0.46
+glow_strength = 0.12
+glow_bloom = 1.0
+glow_blend_mode = 0
 glow_hdr_threshold = 0.83
 glow_hdr_scale = 1.72
 glow_hdr_luminance_cap = 44.45
@@ -57,6 +84,11 @@ default_font = ExtResource("9_7quy0")
 
 [sub_resource type="Theme" id="Theme_ovak3"]
 default_font = ExtResource("9_7quy0")
+
+[sub_resource type="Gradient" id="Gradient_870d6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e482b"]
+gradient = SubResource("Gradient_870d6")
 
 [node name="Game" type="Node2D"]
 
@@ -127,6 +159,13 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_vertical_enabled = true
+
+[node name="GroundDirt" type="GPUParticles2D" parent="Blob"]
+position = Vector2(-3, 1)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8hmm5")
+lifetime = 0.5
+randomness = 0.19
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -1)
@@ -266,6 +305,19 @@ size_flags_vertical = 6
 theme = SubResource("Theme_ovak3")
 text = "Menu"
 
+[node name="ForPhone" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="ForPhone"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="ForPhone/CenterContainer"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-15, 20)
+scale = Vector2(10.475, 5.665)
+texture_normal = SubResource("GradientTexture2D_e482b")
+
 [connection signal="area_entered" from="ScoreCounter" to="GameManager" method="_on_score_counter_area_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/Retry" to="Obstacle_Spawner" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/MainMenu" to="Obstacle_Spawner" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ForPhone/CenterContainer/TouchScreenButton" to="Blob" method="_on_touch_screen_button_pressed"]

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 const JUMP_VELOCITY = -130
 @onready var animate = $AnimatedSprite2D
+@onready var ground_dirt = $GroundDirt
 
 var gravity = 380.5
 
@@ -18,10 +19,12 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		ground_dirt.set_emitting(false)
 		if Input.is_action_just_pressed("Duck") and GameManager.player_alive == true:
 			velocity.y = -1 * 2 * JUMP_VELOCITY
 	else:
 		animate.play("Idle")
+		ground_dirt.set_emitting(true)
 	
 	# As the player has jumped now and was on the floor in previous frame, this will run
 	if not is_on_floor() and was_on_floor:
@@ -36,8 +39,17 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("Jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		move_and_slide()
+		
 
 func game_over():
 	GameManager.player_alive = false
 
 
+
+# for touch input I guess
+func _on_touch_screen_button_pressed():
+	if GameManager.player_alive == true:
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		else:
+			velocity.y = -1 * 2 * JUMP_VELOCITY

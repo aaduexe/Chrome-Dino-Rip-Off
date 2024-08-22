@@ -52,6 +52,7 @@ func _on_button_pressed():
 	GameManager.increasePoint = 5
 	GameManager.GlobalSpeed = -30
 	GameManager.Globaltutorial = false
+	GameManager.player_alive = true
 	get_tree().reload_current_scene()
 
 
