@@ -7,6 +7,8 @@ An open-source pixel art endless runner rip off of the Chrome Dino game!
 ## Overview
 Dino Rip Off is a fun and challenging game where you guide a square blob through a platform, avoiding obstacles and striving to achieve the highest score. It’s designed to be a learning experience and a foundation for others to build upon.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F61270OL)
+
 ## Key Features
 **Endless Running Gameplay:** Navigate through a pattern based parallaxing city.
 **Simple Controls:** Jump and duck to avoid obstacles.
@@ -23,11 +25,17 @@ Dino Rip Off is a fun and challenging game where you guide a square blob through
 ## Development Status
 *Current Progress:*
 *(in early stage)*
-- Platform looping is implemented.
-- On-ready obstacle spawning and basic scoring logic are set up.
-- Character animations (idle and jump) are in place.
-- Parallaxing background is implemented
-- Ground obstacles generate on randon range.
+- [x] Platform looping.
+- [x] On-ready obstacle spawning and basic scoring logic are set up.
+- [x] Character animations (idle and jump) are in place.
+- [x] Parallaxing background is implemented
+- [x] Ground obstacles generate on randon range.
+- [x] Main Menu and Game Over Menu
+- [x] Score counting off if player dies
+- [ ] Game buttons and main screen yassifying
+- [ ] High score saving system
+- [ ] Add air obstacles
+- [ ] Animation when colliding with obstacle
 
 # Getting Started
 *Clone the Repository:*
