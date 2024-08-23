@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var destroyPoint = -84.0
+var destroyPoint = -150.0
 @onready var timer = $"../../Timer"
 @onready var game_over = $"../../CanvasLayer/GameOver"
 

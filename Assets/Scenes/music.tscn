@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1w75nc0hfsf6"]
+
+[ext_resource type="AudioStream" uid="uid://7ulnulugte5a" path="res://Assets/Sound/685206__x1shi__video-game-music-seamless.wav" id="1_4avjw"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_4avjw")
+autoplay = true

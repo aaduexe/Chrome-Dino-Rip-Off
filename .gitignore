@@ -2,6 +2,8 @@
 .godot/
 /Concepts/*
 /Build/*
+/android/*
 /icon.svg
 /icon.svg.import
 /export_presets.cfg
+/Assets/Sound/*

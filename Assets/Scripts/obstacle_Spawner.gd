@@ -6,7 +6,7 @@ var target_x = null
 var spawnDistant = 0
 var is_spawnable = false
 
-var obsSpawnPoint_x = 95.0
+var obsSpawnPoint_x = 150
 var obsSpawnPoint_y = -25
 
 var obsInstance = [load("res://Assets/Scenes/spike0.tscn"),load("res://Assets/Scenes/spike1.tscn"), load("res://Assets/Scenes/spikeTrad.tscn")]
@@ -22,7 +22,7 @@ func _ready():
 	generateRandom_spawner()
 	generateRandom_chooser()
 
-func _process(delta):
+func _process(_delta):
 	children = get_children()
 	targetObject = children[children.size()-1]
 	target_x = targetObject.position.x

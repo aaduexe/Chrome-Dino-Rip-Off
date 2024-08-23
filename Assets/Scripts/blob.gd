@@ -5,6 +5,9 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -130
 @onready var animate = $AnimatedSprite2D
 @onready var ground_dirt = $GroundDirt
+@onready var run = $Run
+@onready var jump = $Jump
+
 
 var gravity = 380.5
 
@@ -16,14 +19,17 @@ var was_on_floor = true
 func _physics_process(delta):
 
 
-
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+		run.play(0.0) # I have no idea why this line is here, it should ideally be in else: because I want this to play when the player is on floor.
+
 		ground_dirt.set_emitting(false)
 		if Input.is_action_just_pressed("Duck") and GameManager.player_alive == true:
 			velocity.y = -1 * 2 * JUMP_VELOCITY
 	else:
 		animate.play("Idle")
+		jump.play() #ideallythis should be above if the player is not on floor.
 		ground_dirt.set_emitting(true)
 	
 	# As the player has jumped now and was on the floor in previous frame, this will run

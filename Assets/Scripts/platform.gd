@@ -1,10 +1,10 @@
 extends Node2D
 
 
-var destroyPoint = -370
+var destroyPoint = -400
 
 var scene: PackedScene = load("res://Assets/Scenes/Platform.tscn")
-var newPlatformPosition = 766
+var newPlatformPosition = 736
 
 func _process(delta):
 	var speed = GameManager.GlobalSpeed
