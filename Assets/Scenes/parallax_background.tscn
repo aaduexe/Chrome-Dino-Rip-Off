@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://b73l8ofgjj3f6"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/parallaxBackground.gd" id="1_21eg2"]
+[ext_resource type="Texture2D" uid="uid://d0wt7lxnmbaqa" path="res://Assets/Sprites/BG.png" id="2_22ol3"]
+[ext_resource type="Texture2D" uid="uid://bpuodqljs3r2q" path="res://Assets/Sprites/Parallaxes.png" id="3_kp7qv"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_21eg2")
+
+[node name="Total Background" type="ParallaxLayer" parent="."]
+z_index = -500
+
+[node name="Sprite2D" type="Sprite2D" parent="Total Background"]
+position = Vector2(20, -25)
+scale = Vector2(4.3125, 2)
+texture = ExtResource("2_22ol3")
+
+[node name="Distant" type="ParallaxLayer" parent="."]
+z_index = -250
+position = Vector2(0, -15)
+scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(575.85, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Distant"]
+texture = ExtResource("3_kp7qv")
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 106.916)
+
+[node name="Cloud" type="ParallaxLayer" parent="."]
+z_index = -150
+position = Vector2(-1, 7)
+motion_mirroring = Vector2(529.22, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cloud"]
+texture = ExtResource("3_kp7qv")
+region_enabled = true
+region_rect = Rect2(0, 182, 576, 29.4459)
+
+[node name="Mid Build" type="ParallaxLayer" parent="."]
+z_index = -90
+position = Vector2(0, 2)
+motion_mirroring = Vector2(460.755, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mid Build"]
+z_index = -1
+position = Vector2(118, -20)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_kp7qv")
+region_enabled = true
+region_rect = Rect2(0, 218.995, 576, 99.0841)

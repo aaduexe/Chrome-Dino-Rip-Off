@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://kvg8oqmdu4rr"]
+[gd_scene load_steps=7 format=3 uid="uid://kvg8oqmdu4rr"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_screen.gd" id="1_lt81a"]
+[ext_resource type="AudioStream" uid="uid://c7wi8slp87263" path="res://Assets/Sound/click.wav" id="2_e05mh"]
+[ext_resource type="PackedScene" uid="uid://b73l8ofgjj3f6" path="res://Assets/Scenes/parallax_background.tscn" id="2_glhwg"]
 [ext_resource type="Theme" uid="uid://du1q64ns2bx54" path="res://Assets/Scenes/resources/buttons.tres" id="2_og603"]
+[ext_resource type="AudioStream" uid="uid://b73pcs0oncyda" path="res://Assets/Sound/blipSelect.wav" id="2_yyub8"]
+
+[sub_resource type="Environment" id="Environment_6ueqt"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.8
 
 [node name="main_screen" type="Control"]
 layout_mode = 3
@@ -11,6 +20,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lt81a")
+
+[node name="OnClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e05mh")
+
+[node name="OnSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yyub8")
+bus = &"Player Sfx"
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" parent="BG" instance=ExtResource("2_glhwg")]
+offset = Vector2(0, 281)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 281)
+follow_viewport_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="BG/ParallaxBackground"]
+environment = SubResource("Environment_6ueqt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,5 +69,7 @@ size_flags_vertical = 3
 theme = ExtResource("2_og603")
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_start_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_mouse_entered"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/Quit" to="." method="_on_mouse_entered"]

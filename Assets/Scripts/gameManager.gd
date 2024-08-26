@@ -9,7 +9,7 @@ var Globaltutorial = true
 var player_alive = true
 
 
-func _on_score_counter_area_entered(area):
+func _on_score_counter_area_entered(_area):
 	if player_alive == true:
 		obstacleCounter += 1
 	

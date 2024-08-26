@@ -1,10 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://cbbubsu6ot2co"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/gameManager.gd" id="1_eiwda"]
-[ext_resource type="Script" path="res://Assets/Scripts/parallaxBackground.gd" id="1_hcojy"]
 [ext_resource type="PackedScene" uid="uid://ch208u2muxe4a" path="res://Assets/Scenes/Platform.tscn" id="1_jmujv"]
-[ext_resource type="Texture2D" uid="uid://d0wt7lxnmbaqa" path="res://Assets/Sprites/BG.png" id="2_157kv"]
-[ext_resource type="Texture2D" uid="uid://bpuodqljs3r2q" path="res://Assets/Sprites/Parallaxes.png" id="2_kaxv0"]
+[ext_resource type="PackedScene" uid="uid://b73l8ofgjj3f6" path="res://Assets/Scenes/parallax_background.tscn" id="1_wngr0"]
 [ext_resource type="PackedScene" uid="uid://cj6pblea8q7qw" path="res://Assets/Scenes/blob.tscn" id="3_yn56u"]
 [ext_resource type="AudioStream" uid="uid://cqalh01cd42kc" path="res://Assets/Sound/Running sound loop.wav" id="7_ex58r"]
 [ext_resource type="PackedScene" uid="uid://bwve2v1q2t75b" path="res://Assets/Scenes/spike0.tscn" id="7_ouru2"]
@@ -13,6 +11,8 @@
 [ext_resource type="FontFile" uid="uid://ldl8cjqmn2ne" path="res://Assets/fonts/PixelOperator8.ttf" id="9_7quy0"]
 [ext_resource type="Script" path="res://Assets/Scripts/labelManager.gd" id="10_gu7ct"]
 [ext_resource type="FontFile" uid="uid://b7sflrkstwxlt" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="11_8fy1n"]
+[ext_resource type="AudioStream" uid="uid://c7wi8slp87263" path="res://Assets/Sound/click.wav" id="11_heo1y"]
+[ext_resource type="AudioStream" uid="uid://b73pcs0oncyda" path="res://Assets/Sound/blipSelect.wav" id="12_igmo3"]
 [ext_resource type="Theme" uid="uid://du1q64ns2bx54" path="res://Assets/Scenes/resources/buttons.tres" id="14_cyoly"]
 
 [sub_resource type="Curve" id="Curve_5ctna"]
@@ -89,50 +89,7 @@ gradient = SubResource("Gradient_870d6")
 
 [node name="Game" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("1_hcojy")
-
-[node name="Total Background" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -500
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Total Background"]
-position = Vector2(20, -25)
-scale = Vector2(4.3125, 2)
-texture = ExtResource("2_157kv")
-
-[node name="Distant" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -250
-position = Vector2(0, -15)
-scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(575.85, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Distant"]
-texture = ExtResource("2_kaxv0")
-region_enabled = true
-region_rect = Rect2(0, 0, 576, 106.916)
-
-[node name="Cloud" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -150
-position = Vector2(-1, 7)
-motion_mirroring = Vector2(529.22, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud"]
-texture = ExtResource("2_kaxv0")
-region_enabled = true
-region_rect = Rect2(0, 182, 576, 29.4459)
-
-[node name="Mid Build" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = -90
-position = Vector2(0, 2)
-motion_mirroring = Vector2(460.755, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mid Build"]
-z_index = -1
-position = Vector2(118, -20)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_kaxv0")
-region_enabled = true
-region_rect = Rect2(0, 218.995, 576, 99.0841)
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_wngr0")]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -260,6 +217,13 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="OnClick" type="AudioStreamPlayer" parent="CanvasLayer/GameOver"]
+stream = ExtResource("11_heo1y")
+
+[node name="OnSelect" type="AudioStreamPlayer" parent="CanvasLayer/GameOver"]
+stream = ExtResource("12_igmo3")
+bus = &"Player Sfx"
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
 layout_mode = 1
 anchors_preset = 8
@@ -323,6 +287,8 @@ scale = Vector2(15, 7)
 texture_normal = SubResource("GradientTexture2D_e482b")
 
 [connection signal="area_entered" from="ScoreCounter" to="GameManager" method="_on_score_counter_area_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/GameOver/VBoxContainer/Retry" to="Obstacle_Spawner" method="_hover_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/Retry" to="Obstacle_Spawner" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/GameOver/VBoxContainer/MainMenu" to="Obstacle_Spawner" method="_hover_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/MainMenu" to="Obstacle_Spawner" method="_on_main_menu_pressed"]
 [connection signal="pressed" from="ForPhone/CenterContainer/TouchScreenButton" to="Blob" method="_on_touch_screen_button_pressed"]
