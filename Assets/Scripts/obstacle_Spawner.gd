@@ -39,13 +39,14 @@ func _process(_delta):
 
 
 func generateRandom_spawner():
-	spawnDistant = randi_range(-50,60)
+	spawnDistant = randi_range(60,120)
 
 func generateRandom_chooser():
 	obsIndex = randi_range(0,obsInstance.size()-1)
 
 
 func _on_button_pressed():
+	AudioServer.set_bus_effect_enabled(2,0,false)
 	Engine.time_scale = 1
 	GameManager.obstacleCounter = 0
 	GameManager.distance = 0
@@ -57,5 +58,12 @@ func _on_button_pressed():
 
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://.godot/exported/133200997/export-0b9d4d0bfaa9a9087055bc68789fc9ba-main_screen.scn")
+	Engine.time_scale = 1
+	GameManager.obstacleCounter = 0
+	GameManager.distance = 0
+	GameManager.increasePoint = 5
+	GameManager.GlobalSpeed = -30
+	GameManager.Globaltutorial = false
+	GameManager.player_alive = true
+	get_tree().change_scene_to_file("res://Assets/Scenes/main_screen.tscn")
 

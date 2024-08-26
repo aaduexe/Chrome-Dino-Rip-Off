@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://kvg8oqmdu4rr"]
+[gd_scene load_steps=3 format=3 uid="uid://kvg8oqmdu4rr"]
 
-[ext_resource type="FontFile" uid="uid://b7sflrkstwxlt" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_gvby7"]
 [ext_resource type="Script" path="res://Assets/Scripts/main_screen.gd" id="1_lt81a"]
-
-[sub_resource type="Theme" id="Theme_pejje"]
-default_font = ExtResource("1_gvby7")
-
-[sub_resource type="Theme" id="Theme_tctkc"]
-default_font = ExtResource("1_gvby7")
+[ext_resource type="Theme" uid="uid://du1q64ns2bx54" path="res://Assets/Scenes/resources/buttons.tres" id="2_og603"]
 
 [node name="main_screen" type="Control"]
 layout_mode = 3
@@ -18,38 +12,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lt81a")
 
-[node name="Start" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -12.0
-offset_right = 34.0
-offset_bottom = 12.0
+offset_left = -36.0
+offset_top = -30.0
+offset_right = 36.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_pejje")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_og603")
 action_mode = 0
 text = "Play"
 
-[node name="Quit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = 21.0
-offset_right = 33.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_tctkc")
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_og603")
 text = "Quit"
 
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

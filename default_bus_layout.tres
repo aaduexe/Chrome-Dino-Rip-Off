@@ -1,9 +1,13 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://barcdat7ulaox"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://barcdat7ulaox"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_hjbal"]
+resource_name = "LowPassFilter"
+cutoff_hz = 1200.0
 
 [resource]
 bus/0/volume_db = 0.796078
 bus/1/name = &"Player Sfx"
-bus/1/solo = true
+bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.53166
@@ -12,5 +16,7 @@ bus/2/name = &"Music"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -1.32149
+bus/2/volume_db = -4.76812
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_hjbal")
+bus/2/effect/0/enabled = true

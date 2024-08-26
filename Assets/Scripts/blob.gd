@@ -15,7 +15,6 @@ var gravity = 380.5
 var was_on_floor = true
 
 
-
 func _physics_process(delta):
 
 
@@ -48,6 +47,8 @@ func _physics_process(delta):
 		
 
 func game_over():
+	AudioServer.set_bus_effect_enabled(2,0,true)
+	animate.play("kill")
 	GameManager.player_alive = false
 
 

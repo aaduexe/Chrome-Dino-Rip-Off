@@ -5,3 +5,4 @@
 [node name="Music" type="AudioStreamPlayer"]
 stream = ExtResource("1_4avjw")
 autoplay = true
+bus = &"Music"

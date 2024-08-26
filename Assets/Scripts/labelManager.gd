@@ -6,6 +6,7 @@ extends Node
 @onready var down_arrow = $"Down Arrow"
 @onready var camera_2d = $"../Blob/Camera2D"
 
+
 var tutorial = GameManager.Globaltutorial
 var space_passed = false
 var do_not_touch = false
@@ -52,3 +53,4 @@ func _process(delta):
 		distance_covered.text = "Distance: " + str(distance_display_int) + "m"
 	elif distance_display_int >= 1000:
 		distance_covered.text = "Distance: " + str(sin_distance) + "km"
+	

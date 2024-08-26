@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://du1q64ns2bx54"]
+
+[ext_resource type="FontFile" uid="uid://b7sflrkstwxlt" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_5dqdt"]
+[ext_resource type="Texture2D" uid="uid://bv4vra7g7kahu" path="res://Assets/Sprites/GUI.png" id="2_o5tyl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ph6hq"]
+texture = ExtResource("2_o5tyl")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(112.755, 112.36, 30.6381, 15.2974)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_irqd5"]
+texture = ExtResource("2_o5tyl")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(112.731, 80.7029, 30.5395, 14.7292)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_578sk"]
+texture = ExtResource("2_o5tyl")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(112.282, 97.4376, 31.2954, 14.029)
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_5dqdt")
+Button/styles/hover = SubResource("StyleBoxTexture_ph6hq")
+Button/styles/normal = SubResource("StyleBoxTexture_irqd5")
+Button/styles/pressed = SubResource("StyleBoxTexture_578sk")
