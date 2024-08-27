@@ -32,10 +32,10 @@ Dino Rip Off is a fun and challenging game where you guide a square blob through
 - [x] Ground obstacles generate on randon range.
 - [x] Main Menu and Game Over Menu
 - [x] Score counting off if player dies
-- [ ] Game buttons and main screen yassifying
+- [x] Game buttons and main screen yassifying
 - [ ] High score saving system
-- [ ] Add air obstacles
-- [ ] Animation when colliding with obstacle
+- [x] Add air obstacles
+- [x] Animation when colliding with obstacle
 
 # Getting Started
 *Clone the Repository:*
