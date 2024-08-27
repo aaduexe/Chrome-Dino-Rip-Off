@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -130
 @onready var ground_dirt = $GroundDirt
 @onready var run = $Run
 @onready var jump = $Jump
+@onready var death = $death
 
 
 var gravity = 380.5
@@ -47,6 +48,7 @@ func _physics_process(delta):
 		
 
 func game_over():
+	death.play()
 	AudioServer.set_bus_effect_enabled(2,0,true)
 	animate.play("kill")
 	GameManager.player_alive = false

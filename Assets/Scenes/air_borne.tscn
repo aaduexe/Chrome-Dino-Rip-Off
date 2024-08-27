@@ -1,7 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://bad7eegr26abn"]
+[gd_scene load_steps=13 format=3 uid="uid://bad7eegr26abn"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/obstacle.gd" id="1_mplpg"]
 [ext_resource type="Texture2D" uid="uid://dr6dda7t5i3x8" path="res://Assets/Sprites/projectile_1.png" id="2_0l71i"]
+[ext_resource type="Texture2D" uid="uid://duqidk665on8v" path="res://Assets/Sprites/Wave.png" id="3_fkl0y"]
+
+[sub_resource type="Curve" id="Curve_p5udc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.559091, 0.577358), 0.0, 0.0, 0, 0, Vector2(1, 0.00377357), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_s0oa3"]
+curve = SubResource("Curve_p5udc")
+
+[sub_resource type="Gradient" id="Gradient_0larj"]
+colors = PackedColorArray(0.486275, 0.247059, 0.345098, 1, 0.86899, 0.424238, 0.234632, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aa76n"]
+gradient = SubResource("Gradient_0larj")
+
+[sub_resource type="Curve" id="Curve_weqbq"]
+min_value = 0.5
+max_value = 2.0
+_data = [Vector2(0, 1.97736), 0.0, 0.0, 0, 0, Vector2(0.804545, 1.95472), 0.0, 0.0, 0, 0, Vector2(0.995455, 0.550943), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cfcl8"]
+curve = SubResource("Curve_weqbq")
+
+[sub_resource type="Curve" id="Curve_kkr50"]
+_data = [Vector2(0, 0.00377357), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sf7hj"]
+curve = SubResource("Curve_kkr50")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q81e6"]
+particle_flag_disable_z = true
+gravity = Vector3(10, 0, 0)
+linear_accel_min = 10.0
+linear_accel_max = 25.0
+linear_accel_curve = SubResource("CurveTexture_cfcl8")
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_sf7hj")
+color = Color(0.486275, 0.247059, 0.345098, 1)
+color_ramp = SubResource("GradientTexture1D_aa76n")
+alpha_curve = SubResource("CurveTexture_s0oa3")
 
 [node name="air_borne" type="Area2D"]
 script = ExtResource("1_mplpg")
@@ -11,5 +53,14 @@ texture = ExtResource("2_0l71i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-3, 0, -1, -2.5, 3, -2.5, 3, 2.5, -1, 2.5)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1, 0)
+process_material = SubResource("ParticleProcessMaterial_q81e6")
+texture = ExtResource("3_fkl0y")
+lifetime = 1.5
+explosiveness = 0.05
+randomness = 0.07
+fixed_fps = 60
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
